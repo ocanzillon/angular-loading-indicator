@@ -1,0 +1,9 @@
+<button (click)="onCall()">Get a random user</button>
+<app-loading-indicator></app-loading-indicator>
+
+<div *ngIf="!!user">
+  <div>Id: {{ user.id }}</div>
+  <div>Name: {{ user.name }}</div>
+  <div>Username: {{ user.username }}</div>
+  <div>Email: {{ user.email }}</div>
+</div>
