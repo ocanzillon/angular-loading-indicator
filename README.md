@@ -44,6 +44,8 @@ export class LoadingIndicatorInterceptor implements HttpInterceptor {
 }
 ```
 
+As every interceptors, it must be defined in `app.module.ts` file in the providers section.
+
 ## Service
 
 The service basically holds a counter of on-going tasks and exposes an Observable emitting the status of the loading indicator as a boolean (are there on-going tasks?).
