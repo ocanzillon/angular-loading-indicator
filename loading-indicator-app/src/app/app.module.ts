@@ -4,15 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { LoadingIndicatorComponent } from './component/loading-indicator/loading-indicator.component';
-import { UserComponent } from './component/user/user.component';
 import { DelayInterceptor } from './interceptor/delay-interceptor.service';
 import { LoadingIndicatorInterceptor } from './interceptor/loading-indicator-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingIndicatorComponent,
-    UserComponent
+    LoadingIndicatorComponent
   ],
   imports: [
     BrowserModule,
