@@ -1,9 +1,15 @@
 <button (click)="onCall()">Get a random user</button>
 <app-loading-indicator></app-loading-indicator>
 
-<div *ngIf="!!user">
-  <div>Id: {{ user.id }}</div>
-  <div>Name: {{ user.name }}</div>
-  <div>Username: {{ user.username }}</div>
-  <div>Email: {{ user.email }}</div>
+<p>
+Click on the button to load a new user. Try to click several times before the first response comes back.
+</p>
+
+<div>
+  <div class="user" *ngFor="let user of users">
+    <div>Id: {{ user.id }}</div>
+    <div>Name: {{ user.name }}</div>
+    <div>Username: {{ user.username }}</div>
+    <div>Email: {{ user.email }}</div>
+  </div>
 </div>

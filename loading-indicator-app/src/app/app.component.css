@@ -1,0 +1,27 @@
+button {
+  background-color: #4caf50;
+  border: solid 2px #4caf50;
+  border-radius: 2px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  margin: 24px 24px 24px 0;
+}
+
+button:hover {
+  background-color: white;
+  color: #4caf50;
+}
+
+.user {
+  margin: 1em;
+  padding: 1em;
+  display: inline-block;
+  border: solid 1px #4caf50;
+  border-radius: 2px;
+}

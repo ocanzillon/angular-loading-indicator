@@ -9,14 +9,14 @@ import { User } from './model/user.model';
 })
 export class AppComponent {
 
-  user: User;
+  users: User[] = [];
 
   constructor(private readonly http: HttpClient) {
   }
 
   onCall() {
     const id = 1 + Math.floor(10 * Math.random());
-    this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`).subscribe(user => this.user = user);
+    this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`).subscribe(user => this.users.push(user));
   }
 
 }
