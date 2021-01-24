@@ -4,17 +4,17 @@ In order to provide a really nice user experience, An Angular application does q
 
 It would be a nice idea to show to the user that something is being processed behind the scene and try to make him more patient. That's where the loading indicator comes into play.
 
-## Architecure
+## Architecture
 
-We need only few elements to achieve that goal:
+We need only a few elements to achieve that goal:
 
 - an HTTP interceptor providing a way to centralize the incrementing and decrementing of the REST calls
-- a service responsible of holding the loading indicator state
+- a service responsible for holding the loading indicator state
 - a component showing the loading indicator
 
 ## HTTP interceptor
 
-All HTTP request are intercepted in order to instruct the service to start the indicator before issuing the request and stop the indicator after receiving the response.
+All HTTP requests are intercepted in order to instruct the service to start the indicator before issuing the request and stop the indicator after receiving the response.
 
 ```typescript
 @Injectable({
@@ -44,7 +44,7 @@ export class LoadingIndicatorInterceptor implements HttpInterceptor {
 }
 ```
 
-As every interceptors, it must be defined in `app.module.ts` file in the providers section.
+As every interceptor, it must be defined in `app.module.ts` file in the providers section.
 
 ## Service
 
@@ -61,7 +61,7 @@ export class LoadingIndicatorService {
   // Subject to emit the state of the loading indicator. By default there is no on-going task
   private readonly _loading$: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
-  // Observale to expose the state of the loading indicator. The value is emitted only when it changes.
+  // Observable to expose the state of the loading indicator. The value is emitted only when it changes.
   readonly loading$: Observable<boolean> = this._loading$.pipe(
     distinctUntilChanged(),
     delay(0)
@@ -117,7 +117,7 @@ export class LoadingIndicatorComponent {
 }
 ```
 
-This implementation of the HTML part of the component is over simple, but the beauty of the UI is not the goal in this example. Of course it could be replaced by a nice Material spinner.
+This implementation of the HTML part of the component is over simple, but the beauty of the UI is not the goal in this example. Of course, it could be replaced by a nice Material spinner.
 
 ```html
 <span *ngIf="loading$ | async">Loading...</span>
