@@ -141,3 +141,5 @@ This implementation of the HTML part of the component is over simple, but the be
 ## Code example
 
 An example of a (really simple) working application can be browsed here: https://github.com/ocanzillon/angular-loading-indicator
+
+![Demonstration](./demo.gif)
