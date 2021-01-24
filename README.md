@@ -1,3 +1,18 @@
+---
+title: 'Loading indicator in an Angular application'
+description: 'Show a loading indicator in an Angular application'
+date: 2021-01-23T19:45:48+00:00
+author: Olivier Canzillon
+main-class: 'angular'
+permalink: /angular-loading-indicator
+categories:
+  - Angular
+tags:
+  - Angular
+
+introduction: 'Show a spinner or any other indicator in an Angular application when HTTP requests are in progress'
+---
+
 # Angular Loading Indicator application
 
 In order to provide a really nice user experience, An Angular application does quite a lot of things behind the scene in an asynchronous manner, such as HTTP requests to perform some operations on the handled resources. The browser does not show that the current route is loading or that a REST call is issued, as in standard websites. If the remote call is long to be processed, the natural behaviour of an impatient user would be to click everywhere to check that the application is not blocked... It would of course result in a huge number of remote calls, making the situation even worse!
@@ -44,7 +59,7 @@ export class LoadingIndicatorInterceptor implements HttpInterceptor {
 }
 ```
 
-As every interceptor, it must be defined in `app.module.ts` file in the providers section.
+As every interceptor, it must be defined in `app.module.ts` file in the providers section. This one should be in the first position.
 
 ## Service
 

@@ -12,7 +12,7 @@ export class LoadingIndicatorService {
   // Subject to emit the state of the loading indicator. By default there is no on-going task
   private readonly _loading$: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
-  // Observale to expose the state of the loading indicator. The value is emitted only when it changes.
+  // Observable to expose the state of the loading indicator. The value is emitted only when it changes.
   readonly loading$: Observable<boolean> = this._loading$.pipe(
     distinctUntilChanged(),
     delay(0)
