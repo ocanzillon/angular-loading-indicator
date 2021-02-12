@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, PartialObserver } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
 
 import { LoadingIndicatorService } from '../service/loading-indicator.service';
 
@@ -9,12 +9,6 @@ import { LoadingIndicatorService } from '../service/loading-indicator.service';
   providedIn: 'root'
 })
 export class LoadingIndicatorInterceptor implements HttpInterceptor {
-
-  // Observer that stops the loading indicator when the HTTP call completes or throws an error
-  private readonly observer: PartialObserver<any> = {
-    error: () => this.loadingIndicatorService.stop(),
-    complete: () => this.loadingIndicatorService.stop()
-  };
 
   constructor(private readonly loadingIndicatorService: LoadingIndicatorService) {
   }
@@ -25,8 +19,8 @@ export class LoadingIndicatorInterceptor implements HttpInterceptor {
 
     // Return the original request
     return next.handle(req)
-      // Tap the request to add the behavior of the observer stopping the loading indicator
-      .pipe(tap(this.observer));
+      // Stops the loading indicator when the HTTP call get cancelled, completes or throws an error
+      .pipe(finalize(() => this.loadingIndicatorService.stop()));
   }
 
 }

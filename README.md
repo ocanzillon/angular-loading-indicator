@@ -37,12 +37,6 @@ All HTTP requests are intercepted in order to instruct the service to start the 
 })
 export class LoadingIndicatorInterceptor implements HttpInterceptor {
 
-  // Observer that stops the loading indicator when the HTTP call completes or throws an error
-  private readonly observer: PartialObserver<any> = {
-    error: () => this.loadingIndicatorService.stop(),
-    complete: () => this.loadingIndicatorService.stop()
-  };
-
   constructor(private readonly loadingIndicatorService: LoadingIndicatorService) {
   }
 
@@ -52,8 +46,8 @@ export class LoadingIndicatorInterceptor implements HttpInterceptor {
 
     // Return the original request
     return next.handle(req)
-      // Tap the request to add the behavior of the observer stopping the loading indicator
-      .pipe(tap(this.observer));
+      // Stops the loading indicator when the HTTP call get cancelled, completes or throws an error
+      .pipe(finalize(() => this.loadingIndicatorService.stop()));
   }
 
 }
